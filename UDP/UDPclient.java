@@ -16,17 +16,17 @@ public class UDPclient {
         DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPserver, 8708);
         long tempoIda = System.currentTimeMillis();
         clienteSocket.send(sendPacket);
-        System.out.println(tempoIda);
+        System.out.println("Tempo de ida: " + tempoIda + ".");
         
         DatagramPacket resposta = new DatagramPacket(rcvData, rcvData.length);
         clienteSocket.receive(resposta);
         long tempoVolta = System.currentTimeMillis();
         String r = new String(resposta.getData());
-        System.out.println(tempoVolta);
-        long rtt = tempoVolta - tempoIda;
+        System.out.println("Tempo de volta: " + tempoVolta + ".");
+        double rtt = tempoVolta - tempoIda;
 
         System.out.println("Resposta recebida: " + r);
-        System.out.println("RTT: " + rtt + ".");
+        System.out.printf("RTT: %.15f.\n", rtt);
         clienteSocket.close();
         System.out.println("Encerrando a conexão...\nBye bye.");
 

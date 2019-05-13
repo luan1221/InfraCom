@@ -20,9 +20,31 @@ public class TCPserver {
                 out.writeUTF("Conexão estabelecida...");
                 do {
                     msg = in.readUTF();
+                    String res = "";
                     System.out.println("Mensagem do cliente: " + msg);  
-                    out.writeUTF(msg);
-                } while (!msg.equals("Finalizar"));
+                    switch (msg.charAt(0)) {
+                        case 'F':
+                            res = "Pra já, rochedo.";
+                            break;
+                        case 'O':
+                            res = "Dale mo pirraia!!";
+                            break;
+                        case 'I':
+                            res = "Excama só de peixeee! Uaiinn!";
+                            break;
+                        case 'A':
+                            res = "Eu tô só caladuu...";
+                            break;
+                        case 'U':
+                            res = "UH A JOVI AEEE!!!!";
+                            break;
+                        case 'E':
+                            res = "Oh 9vinha c é tudo de bom.";
+                        default:
+                            res = "É cada um com seu poder...";
+                    }
+                    out.writeUTF(res);
+                } while (!msg.equals("Finaliza aê cpc"));
                 
                 System.out.println("Conexão encerrada.");
 

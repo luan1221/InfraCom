@@ -17,14 +17,21 @@ public class TCPclient {
             DataInputStream in = new DataInputStream(socket.getInputStream()); 
             
             String msg = in.readUTF();
-            System.out.println("Mensagem do servidor: " + msg + ".");
+            
+            System.out.println("Mensagem do servidor: " + msg);
             do { 
                 msg = userMsg.readLine();
                 out.writeUTF(msg);
+                long tempoIda = System.currentTimeMillis();
+                System.out.println("t1: " + tempoIda + ".");
                 msg = in.readUTF();
-                System.out.println("Mensagem do servidor: " + msg + ".");
+                long tempoVolta = System.currentTimeMillis();
+                double rtt = tempoVolta - tempoIda;
+                System.out.println("t2: " + tempoVolta + ".");
+                System.out.printf("RTT: %.15f.\n", rtt);
+                System.out.println("Mensagem do servidor: " + msg);
 
-            } while (!msg.equals("Finalizar"));
+            } while (!msg.equals("Pra já, rochedo."));
 
             System.out.println("Conexão Encerrada.");
             socket.close();
