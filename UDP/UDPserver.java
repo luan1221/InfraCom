@@ -1,7 +1,6 @@
-import java.io.IOException;
-import java.net.DatagramSocket;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
+import java.io.*;
+import java.net.*;
+
 
 public class UDPserver {
     public static void main(String[] args) throws IOException {
